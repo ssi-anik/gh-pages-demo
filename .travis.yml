@@ -1,12 +1,14 @@
 language: node_js
 node_js:
-    - "stable"
-cache:
-    directories:
-        - node_modules
+    - "14"
+script:
+    - npm run build
 before_script:
     - npm install
-    - "git config user.name Travis-CI"
-    - "git config user.email ci@travis-ci.org"
-script:
-    - npm run deploy
+deploy:
+    provider: pages
+    skip_cleanup: true
+    github_token: $github_token
+    local_dir: build
+    on:
+        branch: master
