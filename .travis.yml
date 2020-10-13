@@ -3,5 +3,7 @@ node_js:
     - "stable"
 before_script:
     - npm install
+    - "git config user.name Travis-CI"
+    - "git config user.email ci@travis-ci.org"
 script:
     - npm run deploy
